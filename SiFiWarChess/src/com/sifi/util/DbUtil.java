@@ -10,7 +10,7 @@ import java.sql.Connection;
  */
 public class DbUtil {
 	
-	private String dbUrl = "jdbc:mysql://localhost:3306/war_chess?autoReconnect=true&useSSL=false";	// Database connecting address
+	private String dbUrl = "jdbc:mysql://localhost:3306/sifi_war?autoReconnect=true&useSSL=false";	// Database connecting address
 	private String dbUserName = "root";        						// UserName 
 	private String dbPassword = "lzh977372";   						// and Password of Database
 	private String jdbcName = "com.mysql.jdbc.Driver";				// Driver name
