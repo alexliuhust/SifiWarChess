@@ -43,6 +43,7 @@ public class Continuous implements SkillCal {
 	public void calculate(Skill skill, Unit caster, Unit target) {
 		if (caster.c_mana < skill.manacost || skill.cur_cold_t < skill.cold_t)
 			return;
+		System.out.println("Succeed");
 		caster.c_mana -= skill.manacost;
 		skill.cur_cold_t = 0;
 		

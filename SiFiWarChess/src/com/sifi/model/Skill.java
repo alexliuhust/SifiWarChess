@@ -39,9 +39,9 @@ public class Skill {
 	public void showinfo() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Skill [period:" + this.period + "|");
-		sb.append("cur_cold_t:" + this.cur_cold_t + "|");
+		sb.append("cur_cold_t:" + this.cur_cold_t + "] ");
 		for (int i = 0; i < degree.length; i++) {
-			sb.append("|" + attributes[i] + ":" + degree[i] + "|");
+			sb.append(attributes[i] + ":" + degree[i] + ", ");
 		}
 		System.out.println(sb.toString());
 	}

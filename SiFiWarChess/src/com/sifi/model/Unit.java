@@ -115,12 +115,33 @@ public class Unit {
 	
 	public void setAttribute(String attr, Integer dgr) {
 		//System.out.println(attr + ": " + dgr);
-		if (attr.equals("scale")) this.c_scale += dgr;
-		else if (attr.equals("shield")) this.c_shield += dgr;
-		else if (attr.equals("uhp")) this.uhp += dgr;
-		else if (attr.equals("mana")) this.c_mana += dgr;
-		else if (attr.equals("speed")) this.speed += dgr;
-		else if (attr.equals("armor")) this.armor += dgr;
+		if (attr.equals("scale")) {
+			this.c_scale += dgr;
+			if (this.c_scale > this.scale)
+				this.c_scale = this.scale;
+		}
+		else if (attr.equals("shield")) {
+			this.c_shield += dgr;
+			if (this.c_shield > this.shield)
+				this.c_shield = this.shield;
+		}
+		else if (attr.equals("mana")) {
+			this.c_mana += dgr;
+			if (this.c_mana < 0) this.c_mana = 0;
+			else if (this.c_mana > this.mana) this.c_mana = mana;
+		}
+		
+		else if (attr.equals("uhp")) {
+			this.uhp += dgr;
+			if (this.uhp <= 0) 
+				this.uhp = 1;
+		}
+		else if (attr.equals("speed")) {
+			this.speed += dgr;
+		}
+		else if (attr.equals("armor")) {
+			this.armor += dgr;
+		}
 		else if (attr.equals("damage")) {
 			this.g_lb += dgr;
 			this.g_hb += dgr;

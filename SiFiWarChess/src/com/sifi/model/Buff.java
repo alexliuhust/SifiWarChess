@@ -55,9 +55,9 @@ public class Buff {
 	
 	public void showInfo() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Buff [type=" + type + ", period=" + period + ", c_period=" + c_period + "]");
+		sb.append("Buff [type=" + type + ", period=" + period + ", c_period=" + c_period + "] ");
 		for (int i = 0; i < dgrs.size(); i++) {
-			sb.append("|" + attrs.get(i) + ":" + dgrs.get(i) + "|");
+			sb.append(attrs.get(i) + ":" + dgrs.get(i) + ", ");
 		}
 		System.out.println(sb.toString());
 	}

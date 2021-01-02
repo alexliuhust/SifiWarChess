@@ -128,7 +128,7 @@ public class Test {
 		skill.cold_t     =  5;
 		skill.cur_cold_t =  5;
 		skill.setAttributes("mana");
-		skill.setDegree("-40");
+		skill.setDegree("-100");
 		
 		Unit marine = new Unit();
 		marine.name            = "Marine";
@@ -162,7 +162,7 @@ public class Test {
 		caster.skills.add(skill);
 		caster.mana = caster.c_mana = 0;
 		
-		int turn = 7;
+		int turn = 6;
 		marine.showInfo();
 		
 		for (int i = 1; i <= turn; i++) {
