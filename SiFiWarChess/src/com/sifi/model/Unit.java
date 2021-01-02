@@ -114,6 +114,7 @@ public class Unit {
 	}
 	
 	public void setAttribute(String attr, Integer dgr) {
+		System.out.println(attr + ": " + dgr);
 		if (attr.equals("scale")) this.c_scale += dgr;
 		else if (attr.equals("shield")) this.c_shield += dgr;
 		else if (attr.equals("uhp")) this.uhp += dgr;
@@ -163,7 +164,12 @@ public class Unit {
 		}
 	}
 
-
+	@Override
+	public String toString() {
+		return "Unit [name=" + name + ", c_scale=" + c_scale + ", uhp=" + uhp + ", speed=" + speed + ", armor=" + armor
+				+ "\ng_freq=" + g_freq + ", g_range=" + g_range + ", a_freq=" + a_freq + ", a_range=" + a_range + "]";
+	}
+	
 }
 
 

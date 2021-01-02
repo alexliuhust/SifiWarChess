@@ -19,13 +19,13 @@ public class Switch implements SkillCal {
 			// Forward switch
 			if (skill.period == -1) {
 				caster.setAttribute(attr, dgr);
-				skill.period = -2;
+				continue;
 			}
 			// Backward switch
-			else {
-				caster.setAttribute(attr, -dgr);
-				skill.period = -1;
-			}
+			caster.setAttribute(attr, 0 - dgr);
 		}
+		
+		if (skill.period == -1) skill.period = -2;
+		else skill.period = -1;
 	}
 }

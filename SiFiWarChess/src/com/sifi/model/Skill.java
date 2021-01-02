@@ -14,6 +14,7 @@ public class Skill {
 	
 	public String[]   attributes    ;
 	public Integer[]  degree        ;
+	public String     tar_type      ; 
 	
 	public Skill() {}
 	
@@ -33,6 +34,16 @@ public class Skill {
 		SklTrigger trigger = new SklTrigger();
 		trigger.skillTrigger(this, caster, target);
 		trigger = null;
+	}
+	
+	public void showinfo() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Period:" + this.period + "|");
+		sb.append("cur_cold_t:" + this.cur_cold_t + "|");
+		for (int i = 0; i < degree.length; i++) {
+			sb.append("|" + attributes[i] + ":" + degree[i] + "|");
+		}
+		System.out.println(sb.toString());
 	}
 
 }
