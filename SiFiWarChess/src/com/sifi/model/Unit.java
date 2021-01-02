@@ -119,11 +119,13 @@ public class Unit {
 			this.c_scale += dgr;
 			if (this.c_scale > this.scale)
 				this.c_scale = this.scale;
+			else if (this.c_scale < 0) this.c_scale = 0;
 		}
 		else if (attr.equals("shield")) {
 			this.c_shield += dgr;
 			if (this.c_shield > this.shield)
 				this.c_shield = this.shield;
+			else if (this.c_shield < 0) this.c_shield = 0;
 		}
 		else if (attr.equals("mana")) {
 			this.c_mana += dgr;
