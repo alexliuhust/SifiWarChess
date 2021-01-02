@@ -7,8 +7,6 @@ public class Switch implements SkillCal {
 
 	@Override
 	public void calculate(Skill skill, Unit caster, Unit target) {
-		if (caster.c_mana < skill.manacost || skill.cur_cold_t < skill.cold_t)
-			return;
 		caster.c_mana -= skill.manacost;
 		skill.cur_cold_t = 0;
 

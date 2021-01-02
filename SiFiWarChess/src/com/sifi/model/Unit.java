@@ -41,18 +41,8 @@ public class Unit {
 	
 	public Set<Skill> skills  = new HashSet<Skill>();
 	public Set<Buff> buffs = new HashSet<>();
-	public Map<String, Integer> attackMap = new HashMap<>();
 	
-	public Unit() {
-		this.attackMap.put("g_lb", this.g_lb);
-		this.attackMap.put("g_hb", this.g_hb);
-		this.attackMap.put("g_lm", this.g_lm);
-		this.attackMap.put("g_hm", this.g_hm);
-		this.attackMap.put("a_lb", this.a_lb);
-		this.attackMap.put("a_hb", this.a_hb);
-		this.attackMap.put("a_lm", this.a_lm);
-		this.attackMap.put("a_hm", this.a_hm);
-	}
+	public Unit() {}
 	
 	public Unit(Unit target) {
 		this.alias    = target.alias   ;
@@ -89,15 +79,6 @@ public class Unit {
 		this.a_range  = target.a_range ;
 		
 		this.skills   = target.skills  ;
-		
-		this.attackMap.put("g_lb", this.g_lb);
-		this.attackMap.put("g_hb", this.g_hb);
-		this.attackMap.put("g_lm", this.g_lm);
-		this.attackMap.put("g_hm", this.g_hm);
-		this.attackMap.put("a_lb", this.a_lb);
-		this.attackMap.put("a_hb", this.a_hb);
-		this.attackMap.put("a_lm", this.a_lm);
-		this.attackMap.put("a_hm", this.a_hm);
 	}
 	
 	public String getBeAttackedType() {
@@ -110,7 +91,16 @@ public class Unit {
 	}
 	
 	public Integer getSingleDam(String targetBeAttackedType) {
-		return this.attackMap.get(targetBeAttackedType);
+		Map<String, Integer> attackMap = new HashMap<>();
+		attackMap.put("g_lb", this.g_lb);
+		attackMap.put("g_hb", this.g_hb);
+		attackMap.put("g_lm", this.g_lm);
+		attackMap.put("g_hm", this.g_hm);
+		attackMap.put("a_lb", this.a_lb);
+		attackMap.put("a_hb", this.a_hb);
+		attackMap.put("a_lm", this.a_lm);
+		attackMap.put("a_hm", this.a_hm);
+		return attackMap.get(targetBeAttackedType);
 	}
 	
 	public void setAttribute(String attr, Integer dgr) {
@@ -198,8 +188,12 @@ public class Unit {
 //		System.out.println("Unit [uhp=" + uhp + ", speed=" + speed + ", g_freq=" + g_freq);
 //	}
 	
+//	public void showInfo() {
+//		System.out.println("Unit [c_mana=" + c_mana + "]");
+//	}
+	
 	public void showInfo() {
-		System.out.println("Unit [c_mana=" + c_mana + "]");
+		System.out.println(name + ", c_shield=" + c_shield + ", c_scale=" + c_scale);
 	}
 }
 

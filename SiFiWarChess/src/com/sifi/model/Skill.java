@@ -16,6 +16,8 @@ public class Skill {
 	public Integer[]  degree        ;
 	public String     tar_type      ; 
 	
+	public Integer    range         ;
+	
 	public Skill() {}
 	
 	public void setAttributes(String attr) {
