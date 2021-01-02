@@ -115,12 +115,12 @@ public class Unit {
 	
 	public void setAttribute(String attr, Integer dgr) {
 		if (attr.equals("scale")) this.c_scale += dgr;
-		if (attr.equals("shield")) this.shield += dgr;
-		if (attr.equals("uhp")) this.uhp += dgr;
-		if (attr.equals("mana")) this.mana += dgr;
-		if (attr.equals("speed")) this.speed += dgr;
-		if (attr.equals("armor")) this.armor += dgr;
-		if (attr.equals("damage")) {
+		else if (attr.equals("shield")) this.c_shield += dgr;
+		else if (attr.equals("uhp")) this.uhp += dgr;
+		else if (attr.equals("mana")) this.c_mana += dgr;
+		else if (attr.equals("speed")) this.speed += dgr;
+		else if (attr.equals("armor")) this.armor += dgr;
+		else if (attr.equals("damage")) {
 			this.g_lb += dgr;
 			this.g_hb += dgr;
 			this.g_lm += dgr;
@@ -130,11 +130,11 @@ public class Unit {
 			this.a_lm += dgr;
 			this.a_hm += dgr;
 		}
-		if (attr.equals("freq")) {
+		else if (attr.equals("freq")) {
 			this.g_freq += dgr;
 			this.a_freq += dgr;
 		}
-		if (attr.equals("range")) {
+		else if (attr.equals("range")) {
 			this.g_range += dgr;
 			this.a_range += dgr;
 		}

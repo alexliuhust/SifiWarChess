@@ -30,7 +30,8 @@ public class Skill {
 	}
 	
 	public void trigger(Unit caster, Unit target) {
-		SklTrigger.skillTrigger(this, caster, target);
+		SklTrigger trigger = new SklTrigger();
+		trigger.skillTrigger(this, caster, target);
 	}
 
 }
