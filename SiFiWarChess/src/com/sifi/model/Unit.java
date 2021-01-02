@@ -11,7 +11,7 @@ public class Unit {
 	public Integer   cost    ;
 	
 	public Integer   scale   ;
-	public Integer   c_scale;
+	public Integer   c_scale ;
 	public Integer   shield  ;
 	public Integer   c_shield;
 	
@@ -40,7 +40,7 @@ public class Unit {
 	public Integer   a_range ;
 	
 	public Set<Skill> skills  = new HashSet<Skill>();
-	
+	public Set<Buff> buffs = new HashSet<>();
 	public Map<String, Integer> attackMap = new HashMap<>();
 	
 	public Unit() {
@@ -140,10 +140,26 @@ public class Unit {
 		}
 	}
 	
+	public void myTurnStart() {
+		checkBuffs();
+		selfIncreaseManaAndColdTime();
+	}
+	
 	public void selfIncreaseManaAndColdTime() {
 		if (this.c_mana < this.mana) this.c_mana += 10;
 		for (Skill skill : this.skills) {
 			if (skill.cur_cold_t < skill.cold_t) skill.cur_cold_t++;
+		}
+	}
+	
+	public void checkBuffs() {
+		if (!this.buffs.isEmpty()) {
+			for (Buff buff : this.buffs) {
+				int num = buff.triggerOrStop();
+				if (num == -1) {
+					this.buffs.remove(buff);
+				}
+			}
 		}
 	}
 
