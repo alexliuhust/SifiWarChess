@@ -25,7 +25,7 @@ public class Continuous implements SkillCal {
 		contSet.add("mana");
 		
 		chngSet = new HashSet<>();
-		chngSet.add("uph");
+		chngSet.add("uhp");
 		chngSet.add("speed");
 		chngSet.add("armor");
 		chngSet.add("damage");
@@ -59,11 +59,12 @@ public class Continuous implements SkillCal {
 			}
 		}
 		
-		if (!contSet.isEmpty()) {
+		if (!attr0.isEmpty()) {
 			target.buffs.add(new Buff(0, attr0, dgr0, skill.period, target));
 		}
 		
-		if (!chngSet.isEmpty()) {
+		if (!attr1.isEmpty()) {
+			
 			target.buffs.add(new Buff(1, attr1, dgr1, skill.period, target));
 		}
 

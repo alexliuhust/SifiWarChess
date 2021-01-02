@@ -114,7 +114,7 @@ public class Unit {
 	}
 	
 	public void setAttribute(String attr, Integer dgr) {
-		System.out.println(attr + ": " + dgr);
+		//System.out.println(attr + ": " + dgr);
 		if (attr.equals("scale")) this.c_scale += dgr;
 		else if (attr.equals("shield")) this.c_shield += dgr;
 		else if (attr.equals("uhp")) this.uhp += dgr;
@@ -156,8 +156,9 @@ public class Unit {
 	public void checkBuffs() {
 		if (!this.buffs.isEmpty()) {
 			for (Buff buff : this.buffs) {
+				buff.showInfo();
 				int num = buff.triggerOrStop();
-				if (num == -1) {
+				if (num == 0) {
 					this.buffs.remove(buff);
 				}
 			}
@@ -170,6 +171,13 @@ public class Unit {
 				+ "\ng_freq=" + g_freq + ", g_range=" + g_range + ", a_freq=" + a_freq + ", a_range=" + a_range + "]";
 	}
 	
+//	public void showInfo() {
+//		System.out.println("Unit [uhp=" + uhp + ", speed=" + speed + ", g_freq=" + g_freq);
+//	}
+	
+	public void showInfo() {
+		System.out.println("Unit [c_mana=" + c_mana + "]");
+	}
 }
 
 

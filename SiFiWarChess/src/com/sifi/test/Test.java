@@ -61,15 +61,15 @@ public class Test {
 		}
 	}
 	
-	public static void MarineContinuousTest() {
+	public static void MarineContinuousTest1() {
 		Skill Adrenaline = new Skill();
 		Adrenaline.skill      =  "Adrenaline";
 		Adrenaline.type       =  "continuous";
 		Adrenaline.period     =  2;
 		Adrenaline.tar_type   =  "self";
 		Adrenaline.manacost   =  0;
-		Adrenaline.cold_t     =  4;
-		Adrenaline.cur_cold_t =  4;
+		Adrenaline.cold_t     =  5;
+		Adrenaline.cur_cold_t =  5;
 		Adrenaline.setAttributes("uhp/speed/freq");
 		Adrenaline.setDegree("-20/1/2");
 		
@@ -103,8 +103,8 @@ public class Test {
 		
 		marine.skills.add(Adrenaline);
 		
-		int turn = 8;
-		System.out.println(marine);
+		int turn = 10;
+		marine.showInfo();
 		
 		for (int i = 1; i <= turn; i++) {
 			System.out.println("\n\n==================TURN : " + i + " ==================");
@@ -114,13 +114,73 @@ public class Test {
 			
 			marine.myTurnStart();
 			
-			System.out.println(marine);
+			marine.showInfo();
 		}
+	}
+	
+	public static void MarineContinuousTest0() {
+		Skill skill = new Skill();
+		skill.skill      =  "Demana";
+		skill.type       =  "continuous";
+		skill.period     =  2;
+		skill.tar_type   =  "n";
+		skill.manacost   =  0;
+		skill.cold_t     =  5;
+		skill.cur_cold_t =  5;
+		skill.setAttributes("mana");
+		skill.setDegree("-40");
+		
+		Unit marine = new Unit();
+		marine.name            = "Marine";
+		marine.cost            = 100   ;
+		marine.scale           = 50    ;
+		marine.c_scale         = 50    ;
+		marine.shield          = 0     ;
+		marine.c_shield        = 0     ;
+		marine.uhp             = 100   ;
+		marine.mana            = 100     ;
+		marine.c_mana          = 80     ;
+		marine.speed           = 4     ;
+		marine.ga              = 'g'   ;
+		marine.armor           = 0     ;
+		marine.hl              = 'l'   ;
+		marine.bm              = 'b'   ;
+		marine.g_lb            = 6     ;
+		marine.g_hb            = 6     ;
+		marine.g_lm            = 6     ;
+		marine.g_hm            = 6     ;
+		marine.g_freq          = 8     ;
+		marine.g_range         = 4     ;
+		marine.a_lb            = 6     ;
+		marine.a_hb            = 6     ;
+		marine.a_lm            = 6     ;
+		marine.a_lm            = 6     ;
+		marine.a_freq          = 8     ;
+		marine.a_range         = 4     ;
+		
+		Unit caster = new Unit();
+		caster.skills.add(skill);
+		caster.mana = caster.c_mana = 0;
+		
+		int turn = 7;
+		marine.showInfo();
+		
+		for (int i = 1; i <= turn; i++) {
+			System.out.println("\n\n==================TURN : " + i + " ==================");
+			
+			skill.showinfo();
+			skill.trigger(caster, marine);
+			
+			marine.myTurnStart();
+			caster.myTurnStart();
+			marine.showInfo();
+		}
+		
 	}
 	
 
 	public static void main(String[] args) {
-		MarineContinuousTest();
+		MarineContinuousTest0();
 
 	}
 
