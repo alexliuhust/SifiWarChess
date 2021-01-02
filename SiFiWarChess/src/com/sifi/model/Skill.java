@@ -32,6 +32,7 @@ public class Skill {
 	public void trigger(Unit caster, Unit target) {
 		SklTrigger trigger = new SklTrigger();
 		trigger.skillTrigger(this, caster, target);
+		trigger = null;
 	}
 
 }

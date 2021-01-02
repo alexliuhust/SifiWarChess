@@ -139,6 +139,13 @@ public class Unit {
 			this.a_range += dgr;
 		}
 	}
+	
+	public void selfIncreaseManaAndColdTime() {
+		if (this.c_mana < this.mana) this.c_mana += 10;
+		for (Skill skill : this.skills) {
+			if (skill.cur_cold_t < skill.cold_t) skill.cur_cold_t++;
+		}
+	}
 
 
 }

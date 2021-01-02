@@ -12,7 +12,11 @@ public class SklTrigger {
 	
 	public SklTrigger() {
 		map.put("switch", new Switch());
-		
+		map.put("continuous", new Continuous());
+		map.put("onetime", new Onetime());
+		map.put("damage", new Damage());
+		map.put("selfdestruct", new Selfdestruct());
+		map.put("summon", new Summon());
 	}
 
 	public void skillTrigger(Skill skill, Unit caster, Unit target) {
@@ -20,3 +24,6 @@ public class SklTrigger {
 		skillCal.calculate(skill, caster, target);
 	}
 }
+
+
+
