@@ -22,6 +22,10 @@ public class SklTrigger {
 	public void skillTrigger(Skill skill, Unit caster, Unit target) {
 		if (caster.c_mana < skill.manacost || skill.cur_cold_t < skill.cold_t)
 			return;
+		
+		caster.c_mana -= skill.manacost;
+		skill.cur_cold_t = 0;
+		
 		SkillCal skillCal = this.map.get(skill.type);
 		skillCal.calculate(skill, caster, target);
 	}

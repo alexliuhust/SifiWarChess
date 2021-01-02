@@ -13,6 +13,7 @@ public class AttTrigger {
 		if (attacker.a_freq <= 0 || attacker.g_freq <= 0 || target.c_scale <= 0) 
 			return 0;
 		int singleDamage = attacker.getSingleDam(target.getBeAttackedType());
+		if (singleDamage == 0) return 0;
 		singleDamage -= target.armor;
 		if (singleDamage <= 0) 
 			return 0;

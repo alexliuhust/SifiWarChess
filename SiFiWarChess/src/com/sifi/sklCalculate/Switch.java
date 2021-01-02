@@ -7,9 +7,6 @@ public class Switch implements SkillCal {
 
 	@Override
 	public void calculate(Skill skill, Unit caster, Unit target) {
-		caster.c_mana -= skill.manacost;
-		skill.cur_cold_t = 0;
-
 		for (int i = 0; i < skill.attributes.length; i++) {
 			String attr = skill.attributes[i];
 			Integer dgr = skill.degree[i];

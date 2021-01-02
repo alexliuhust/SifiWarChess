@@ -13,7 +13,7 @@ public class Test {
 		marine1.shield          = 50     ;
 		marine1.c_shield        = 50     ;
 		marine1.uhp             = 100   ;
-		marine1.ga              = 'g'   ;
+		marine1.ga              = 'a'   ;
 		marine1.armor           = 0     ;
 		marine1.hl              = 'h'   ;
 		marine1.bm              = 'm'   ;
@@ -25,7 +25,7 @@ public class Test {
 		marine1.a_lb            = 6     ;
 		marine1.a_hb            = 6     ;
 		marine1.a_lm            = 6     ;
-		marine1.a_lm            = 6     ;
+		marine1.a_hm            = 6     ;
 		marine1.a_freq          = 8     ;
 		
 		Unit marine2 = new Unit();
@@ -44,10 +44,10 @@ public class Test {
 		marine2.g_lm            = 1     ;
 		marine2.g_hm            = 1     ;
 		marine2.g_freq          = 8     ;
-		marine2.a_lb            = 6     ;
-		marine2.a_hb            = 6     ;
-		marine2.a_lm            = 6     ;
-		marine2.a_lm            = 6     ;
+		marine2.a_lb            = 0     ;
+		marine2.a_hb            = 0     ;
+		marine2.a_lm            = 0     ;
+		marine2.a_hm            = 0     ;
 		marine2.a_freq          = 8     ;
 		
 		
