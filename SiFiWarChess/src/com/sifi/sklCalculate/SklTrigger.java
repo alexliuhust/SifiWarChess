@@ -13,7 +13,7 @@ public class SklTrigger {
 	public SklTrigger() {
 		map.put("switch", new Switch());
 		map.put("continuous", new Continuous());
-		map.put("onetime", new Onetime());
+		map.put("clearup", new Clearup());
 		map.put("damage", new Damage());
 		map.put("selfdestruct", new Selfdestruct());
 		map.put("summon", new Summon());
@@ -22,6 +22,12 @@ public class SklTrigger {
 	public void skillTrigger(Skill skill, Unit caster, Unit target) {
 		if (caster.c_mana < skill.manacost || skill.cur_cold_t < skill.cold_t)
 			return;
+		
+		// Determine the target type 
+		// 
+		// 
+		// 
+		// 
 		
 		caster.c_mana -= skill.manacost;
 		skill.cur_cold_t = 0;
