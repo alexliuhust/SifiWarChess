@@ -135,14 +135,14 @@ public class Unit {
 			this.armor += dgr;
 		}
 		else if (attr.equals("damage")) {
-			this.g_lb += dgr;
-			this.g_hb += dgr;
-			this.g_lm += dgr;
-			this.g_hm += dgr;
-			this.a_lb += dgr;
-			this.a_hb += dgr;
-			this.a_lm += dgr;
-			this.a_hm += dgr;
+			if (g_lb != 0) this.g_lb += dgr;
+			if (g_hb != 0) this.g_hb += dgr;
+			if (g_lm != 0) this.g_lm += dgr;
+			if (g_hm != 0) this.g_hm += dgr;
+			if (a_lb != 0) this.a_lb += dgr;
+			if (a_hb != 0) this.a_hb += dgr;
+			if (a_lm != 0) this.a_lm += dgr;
+			if (a_hm != 0) this.a_hm += dgr;
 		}
 		else if (attr.equals("freq")) {
 			this.g_freq += dgr;

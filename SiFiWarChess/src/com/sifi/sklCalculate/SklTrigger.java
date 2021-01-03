@@ -13,7 +13,9 @@ public class SklTrigger {
 	public SklTrigger() {
 		map.put("switch", new Switch());
 		map.put("continuous", new Continuous());
+		map.put("medical", new Medical());
 		map.put("clearup", new Clearup());
+		map.put("backlash", new Backlash());
 		map.put("damage", new Damage());
 		map.put("selfdestruct", new Selfdestruct());
 		map.put("summon", new Summon());
