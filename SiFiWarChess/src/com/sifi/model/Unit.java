@@ -90,6 +90,14 @@ public class Unit {
 		return sb.toString();
 	}
 	
+	public String getSkillTargetType() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.ga);
+		sb.append('_');
+		sb.append(this.bm);
+		return sb.toString();
+	}
+	
 	public Integer getSingleDam(String targetBeAttackedType) {
 		Map<String, Integer> attackMap = new HashMap<>();
 		attackMap.put("g_lb", this.g_lb);
@@ -144,10 +152,46 @@ public class Unit {
 			if (a_lm != 0) this.a_lm += dgr;
 			if (a_hm != 0) this.a_hm += dgr;
 		}
+		else if (attr.equals("l")) {
+			if (g_lb != 0) this.g_lb += dgr;
+			if (g_lm != 0) this.g_lm += dgr;
+			if (a_lb != 0) this.a_lb += dgr;
+			if (a_lm != 0) this.a_lm += dgr;
+		}
+		else if (attr.equals("h")) {
+			if (g_hb != 0) this.g_hb += dgr;
+			if (g_hm != 0) this.g_hm += dgr;
+			if (a_hb != 0) this.a_hb += dgr;
+			if (a_hm != 0) this.a_hm += dgr;
+		}
+		else if (attr.equals("g")) {
+			if (g_lb != 0) this.g_lb += dgr;
+			if (g_hb != 0) this.g_hb += dgr;
+			if (g_lm != 0) this.g_lm += dgr;
+			if (g_hm != 0) this.g_hm += dgr;
+		}
+		else if (attr.equals("a")) {
+			if (a_lb != 0) this.a_lb += dgr;
+			if (a_hb != 0) this.a_hb += dgr;
+			if (a_lm != 0) this.a_lm += dgr;
+			if (a_hm != 0) this.a_hm += dgr;
+		}
+		else if (attr.equals("g_lb")) if (g_lb != 0) this.g_lb += dgr;
+		else if (attr.equals("g_hb")) if (g_hb != 0) this.g_hb += dgr;
+		else if (attr.equals("g_lm")) if (g_lm != 0) this.g_lm += dgr;
+		else if (attr.equals("g_hm")) if (g_hm != 0) this.g_hm += dgr;
+		else if (attr.equals("a_lb")) if (a_lb != 0) this.a_lb += dgr;
+		else if (attr.equals("a_hb")) if (a_hb != 0) this.a_hb += dgr;
+		else if (attr.equals("a_lm")) if (a_lm != 0) this.a_lm += dgr;
+		else if (attr.equals("a_hm")) if (a_hm != 0) this.a_hm += dgr;
+		
 		else if (attr.equals("freq")) {
 			this.g_freq += dgr;
 			this.a_freq += dgr;
 		}
+		else if (attr.equals("g_freq")) this.g_freq += dgr;
+		else if (attr.equals("a_freq")) this.a_freq += dgr;
+		
 		else if (attr.equals("range")) {
 			this.g_range += dgr;
 			this.a_range += dgr;
@@ -160,9 +204,11 @@ public class Unit {
 	}
 	
 	public void selfIncreaseManaAndColdTime() {
-		if (this.c_mana < this.mana) this.c_mana += 10;
+		if (this.c_mana < this.mana) 
+			this.c_mana += 10;
 		for (Skill skill : this.skills) {
-			if (skill.cur_cold_t < skill.cold_t) skill.cur_cold_t++;
+			if (skill.cur_cold_t < skill.cold_t) 
+				skill.cur_cold_t++;
 		}
 	}
 	

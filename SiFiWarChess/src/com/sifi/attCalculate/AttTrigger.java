@@ -17,6 +17,8 @@ public class AttTrigger {
 		singleDamage -= target.armor;
 		if (singleDamage <= 0) 
 			return 0;
+		if (singleDamage > target.uhp && singleDamage < 2 * target.uhp) 
+			singleDamage = target.uhp;
 		return singleDamage * attacker.a_freq * attacker.c_scale;
 	}
 	

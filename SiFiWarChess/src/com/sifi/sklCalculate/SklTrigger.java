@@ -26,10 +26,10 @@ public class SklTrigger {
 			return;
 		
 		// Determine the target type 
-		// 
-		// 
-		// 
-		// 
+		if (!skill.tar_type.equals("n")) {
+			if (!skill.tar_type.equals(target.getSkillTargetType()))
+				return;
+		}
 		
 		caster.c_mana -= skill.manacost;
 		skill.cur_cold_t = 0;
