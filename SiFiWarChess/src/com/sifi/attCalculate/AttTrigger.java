@@ -5,39 +5,28 @@ import com.sifi.model.Unit;
 public class AttTrigger {
 	
 	public static void attackTigger(Unit attacker, Unit target) {
-		int totalDamage = totalDamage(attacker, target);
-		scaleDecrease(totalDamage, target);
-	}
-	
-	public static int totalDamage(Unit attacker, Unit target) {
-		if (attacker.a_freq <= 0 || attacker.g_freq <= 0 || target.c_scale <= 0) 
-			return 0;
-		int singleDamage = attacker.getSingleDam(target.getBeAttackedType());
-		if (singleDamage == 0) return 0;
-		singleDamage -= target.armor;
-		if (singleDamage <= 0) 
-			return 0;
-		if (singleDamage > target.uhp && singleDamage < 2 * target.uhp) 
-			singleDamage = target.uhp;
-		return singleDamage * attacker.a_freq * attacker.c_scale;
-	}
-	
-	public static void scaleDecrease(int damage, Unit target) {
-		if (target.c_scale == 0) 
-			return;
-		int numOfDecrease = damage / target.uhp;
-		if (numOfDecrease == 0) {
-			if (damage >= (target.uhp / 2))
-				numOfDecrease = 1;
+		int totalDamageFromAttacker = AtciveAttack.totalDamage(attacker, target);
+		
+		boolean counterAttack = false;
+		if (attacker.ga == 'g' && target.ga == 'g') {
+			if (attacker.g_range <= target.g_range) counterAttack = true;
 		}
-		if (target.c_shield > 0) {
-			target.c_shield -= numOfDecrease;
-			if (target.c_shield < 0) 
-				target.c_shield = 0;
-			return;
+		else if (attacker.ga == 'g' && target.ga == 'a') {
+			if (attacker.a_range <= target.g_range) counterAttack = true;
+		}
+		else if (attacker.ga == 'a' && target.ga == 'g') {
+			if (attacker.g_range <= target.a_range) counterAttack = true;
+		}
+		else if (attacker.ga == 'a' && target.ga == 'a') {
+			if (attacker.a_range <= target.a_range) counterAttack = true;
 		}
 		
-		target.c_scale -= numOfDecrease;
-		if (target.c_scale < 0) target.c_scale = 0;
+		int totalDamageFromDefender = 0;
+		if (counterAttack) 
+			totalDamageFromDefender = PassiveDefense.totalDamage(attacker, target);
+		AtciveAttack.scaleDecrease(totalDamageFromAttacker, target);
+		if (counterAttack) 
+			PassiveDefense.scaleDecrease(totalDamageFromDefender, attacker);
 	}
+	
 }

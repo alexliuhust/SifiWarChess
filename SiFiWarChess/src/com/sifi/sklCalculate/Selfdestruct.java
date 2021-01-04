@@ -1,6 +1,6 @@
 package com.sifi.sklCalculate;
 
-import com.sifi.attCalculate.AttTrigger;
+import com.sifi.attCalculate.AtciveAttack;
 import com.sifi.model.Skill;
 import com.sifi.model.Unit;
 
@@ -10,7 +10,7 @@ public class Selfdestruct implements SkillCal {
 	public void calculate(Skill skill, Unit caster, Unit target) {
 		int damage = skill.degree[0];
 		int totalDamage = damage * caster.c_scale;
-		AttTrigger.scaleDecrease(totalDamage, target);
+		AtciveAttack.scaleDecrease(totalDamage, target);
 		caster.c_scale = 0;
 	}
 

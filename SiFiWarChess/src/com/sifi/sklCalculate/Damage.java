@@ -1,6 +1,6 @@
 package com.sifi.sklCalculate;
 
-import com.sifi.attCalculate.AttTrigger;
+import com.sifi.attCalculate.AtciveAttack;
 import com.sifi.model.Skill;
 import com.sifi.model.Unit;
 
@@ -14,7 +14,7 @@ public class Damage implements SkillCal {
 			damage = (int) (1.5 * target.uhp);
 		
 		int totalDamage = damage * caster.c_scale;
-		AttTrigger.scaleDecrease(totalDamage, target);
+		AtciveAttack.scaleDecrease(totalDamage, target);
 
 	}
 
