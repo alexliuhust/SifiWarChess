@@ -29,12 +29,19 @@ public class PassiveDefense {
 		
 		totalDamageFromDefender = (int) (totalDamageFromDefender * 0.8);
 		
+		// If attacker is a single unit
+		if (attacker.scale == 1) {
+			attacker.c_uhp -= totalDamageFromDefender / 10;
+			return;
+		}
+		
 		int numOfDecrease = totalDamageFromDefender / attacker.uhp;
 		if (numOfDecrease == 0) {
 			if (totalDamageFromDefender >= (attacker.uhp / 2))
 				numOfDecrease = 1;
 		}
 		
+		// If there's shield left, decrease shield first
 		if (attacker.c_shield > 0) {
 			attacker.c_shield -= numOfDecrease;
 			if (attacker.c_shield < 0) 

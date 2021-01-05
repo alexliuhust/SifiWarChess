@@ -37,6 +37,12 @@ public class Buff {
 		return 1;
 	}
 	private int triggerOrStopChange() {
+		if (c_period == period) {
+			for (int i = 0; i < attrs.size(); i++) {
+				target.setAttribute(attrs.get(i), dgrs.get(i));
+			}
+		}
+		
 		if (c_period == 0) {
 			for (int i = 0; i < attrs.size(); i++) {
 				target.setAttribute(attrs.get(i), -dgrs.get(i));
@@ -44,11 +50,6 @@ public class Buff {
 			return 0;
 		}
 		
-		if (c_period == period) {
-			for (int i = 0; i < attrs.size(); i++) {
-				target.setAttribute(attrs.get(i), dgrs.get(i));
-			}
-		}
 		c_period--;
 		return 1;
 	}

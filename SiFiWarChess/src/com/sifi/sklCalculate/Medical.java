@@ -14,7 +14,6 @@ public class Medical implements SkillCal {
 	
 	public Medical() {
 		attr = new ArrayList<>();
-		attr.add("scale");
 		dgr = new ArrayList<>();
 	}
 
@@ -22,8 +21,19 @@ public class Medical implements SkillCal {
 	public void calculate(Skill skill, Unit caster, Unit target) {
 		int degree = skill.degree[0];
 		int totalHealing = degree * caster.c_scale;
-		degree = totalHealing / target.uhp;
-		dgr.add(degree);
+		
+		// Healing phalanx
+		if (target.scale > 1) {
+			attr.add("scale");
+			degree = totalHealing / target.uhp;
+			dgr.add(degree);
+		} 
+		
+		// Healing single unit
+		else {
+			attr.add("uhp");
+			dgr.add(totalHealing);
+		}
 		
 		target.buffs.add(new Buff(0, attr, dgr, skill.period, target));
 	}

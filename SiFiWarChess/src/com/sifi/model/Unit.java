@@ -16,6 +16,7 @@ public class Unit {
 	public Integer   c_shield;
 	
 	public Integer   uhp     ;
+	public Integer   c_uhp   ;
 	public Integer   mana    ;
 	public Integer   c_mana  ;
 	public Integer   speed   ;
@@ -55,6 +56,7 @@ public class Unit {
 		this.c_shield = target.shield  ;
 		
 		this.uhp      = target.uhp     ;
+		this.c_uhp    = target.uhp     ;
 		this.mana     = target.mana    ;
 		this.c_mana   = target.mana    ;
 		this.speed    = target.speed   ;
@@ -132,10 +134,18 @@ public class Unit {
 		}
 		
 		else if (attr.equals("uhp")) {
-			this.uhp += dgr;
-			if (this.uhp <= 0) 
-				this.uhp = 1;
+			// If it's a single unit
+			if (this.scale == 1) {
+				this.c_uhp += dgr;
+				if (this.c_uhp > this.uhp) this.c_uhp = this.uhp;
+				if (this.c_uhp <= 0) this.c_scale = 0;
+			}
+			else {
+				this.uhp += dgr;
+				if (this.uhp <= 0) this.uhp = 1;
+			}
 		}
+		
 		else if (attr.equals("speed")) {
 			this.speed += dgr;
 		}
@@ -206,6 +216,7 @@ public class Unit {
 	public void selfIncreaseManaAndColdTime() {
 		if (this.c_mana < this.mana) 
 			this.c_mana += 10;
+		
 		for (Skill skill : this.skills) {
 			if (skill.cur_cold_t < skill.cold_t) 
 				skill.cur_cold_t++;
@@ -240,6 +251,20 @@ public class Unit {
 	
 	public void showInfo() {
 		System.out.println(name + ", c_shield=" + c_shield + ", c_scale=" + c_scale);
+	}
+	
+	public String showHealth() {
+		
+		if (scale == 1) {
+			
+			return "";
+		}
+		
+		if (shield > 0) {
+			
+		}
+		
+		return "";
 	}
 }
 

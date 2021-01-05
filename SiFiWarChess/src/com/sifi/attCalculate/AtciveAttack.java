@@ -26,12 +26,19 @@ public class AtciveAttack {
 		if (target.c_scale == 0) 
 			return;
 		
+		// If target is a single unit
+		if (target.scale == 1) {
+			target.c_uhp -= totalDamageFromAttacker / 10;
+			return;
+		}
+		
 		int numOfDecrease = totalDamageFromAttacker / target.uhp;
 		if (numOfDecrease == 0) {
 			if (totalDamageFromAttacker >= (target.uhp / 2))
 				numOfDecrease = 1;
 		}
 		
+		// If there's shield left, decrease shield first
 		if (target.c_shield > 0) {
 			target.c_shield -= numOfDecrease;
 			if (target.c_shield < 0) 
