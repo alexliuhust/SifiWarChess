@@ -9,36 +9,33 @@ public class Unit {
 	public String    alias   ;
 	public String    name    ;
 	public Integer   cost    ;
-	
 	public Integer   scale   ;
 	public Integer   c_scale ;
 	public Integer   shield  ;
 	public Integer   c_shield;
-	
 	public Integer   uhp     ;
 	public Integer   c_uhp   ;
 	public Integer   mana    ;
 	public Integer   c_mana  ;
 	public Integer   speed   ;
 	public Character ga      ;
-	
 	public Integer   armor   ;
 	public Character hl      ;
 	public Character bm      ;
-	
 	public Integer   g_lb    ;
 	public Integer   g_hb    ;
 	public Integer   g_lm    ;
 	public Integer   g_hm    ;
 	public Integer   g_freq  ;
 	public Integer   g_range ;
-	
+	public Boolean   g_aoe   ;
 	public Integer   a_lb    ;
 	public Integer   a_hb    ;
 	public Integer   a_lm    ;
 	public Integer   a_hm    ;
 	public Integer   a_freq  ;
 	public Integer   a_range ;
+	public Boolean   a_aoe   ;
 	
 	public Set<Skill> skills  = new HashSet<Skill>();
 	public Set<Buff> buffs = new HashSet<>();
@@ -72,6 +69,7 @@ public class Unit {
 		this.g_hm     = target.g_hm    ;
 		this.g_freq   = target.g_freq  ;
 		this.g_range  = target.g_range ;
+		this.g_aoe    = target.g_aoe   ;
 		
 		this.a_lb     = target.a_lb    ;
 		this.a_hb     = target.a_hb    ;
@@ -79,6 +77,7 @@ public class Unit {
 		this.a_hm     = target.a_hm    ;
 		this.a_freq   = target.a_freq  ;
 		this.a_range  = target.a_range ;
+		this.a_aoe    = target.a_aoe   ;
 		
 		this.skills   = target.skills  ;
 	}

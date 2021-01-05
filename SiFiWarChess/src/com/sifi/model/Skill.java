@@ -16,7 +16,8 @@ public class Skill {
 	public Integer[]  degree        ;
 	public String     tar_type      ; 
 	
-	public Integer    range         ;
+	public Integer    s_range       ;
+	public Boolean    aoe       	;
 	
 	public Skill() {}
 	
