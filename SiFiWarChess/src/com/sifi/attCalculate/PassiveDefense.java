@@ -5,19 +5,18 @@ import com.sifi.model.Unit;
 public class PassiveDefense {
 
 	public static int totalDamage(Unit attacker, Unit target) {
-		if (target.a_freq <= 0 || target.g_freq <= 0) 
-			return 0;
-		
 		int singleDamage = target.getSingleDam(attacker.getBeAttackedType());
 		if (singleDamage == 0) return 0;
 		singleDamage -= attacker.armor;
 		if (singleDamage <= 0) 
 			return 0;
 		
-		// --------Change this into AOE determination in the future--------
-		if (singleDamage > attacker.uhp && singleDamage < 2 * attacker.uhp) 
-			singleDamage = attacker.uhp;
-		// ----------------------------------------------------------------
+		// AOE determination
+		if (singleDamage > attacker.uhp) {
+			if ((attacker.ga == 'a' && !target.a_aoe) || (attacker.ga == 'g' && !target.g_aoe)) {
+				singleDamage = attacker.uhp;
+			}
+		}
 		
 		if (attacker.ga == 'a') return singleDamage * target.a_freq * target.c_scale;
 		return singleDamage * target.g_freq * target.c_scale;

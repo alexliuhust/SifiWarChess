@@ -39,12 +39,14 @@ public class Buff {
 	private int triggerOrStopChange() {
 		if (c_period == period) {
 			for (int i = 0; i < attrs.size(); i++) {
+				//System.out.println(attrs.get(i) + ";" + dgrs.get(i));
 				target.setAttribute(attrs.get(i), dgrs.get(i));
 			}
 		}
 		
 		if (c_period == 0) {
 			for (int i = 0; i < attrs.size(); i++) {
+				//System.out.println(attrs.get(i) + ";" + (-dgrs.get(i)));
 				target.setAttribute(attrs.get(i), -dgrs.get(i));
 			}
 			return 0;
@@ -54,6 +56,19 @@ public class Buff {
 		return 1;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Buff [type=" + type + ", c_period=" + c_period + " ");
+		for (int i = 0; i < dgrs.size(); i++) {
+			sb.append(attrs.get(i)+ ":" + dgrs.get(i)  + "/");
+		}
+		sb.append("]");
+		return sb.toString();
+	}
+
 	public void showInfo() {
 		if (c_period == 0) return;
 		StringBuilder sb = new StringBuilder();

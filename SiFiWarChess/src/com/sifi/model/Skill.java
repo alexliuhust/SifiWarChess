@@ -39,6 +39,14 @@ public class Skill {
 		trigger = null;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Skill [" + skill + ", type=" + type + ", manacost=" + manacost + ", cold_t=" + cur_cold_t
+				+ "\n     tar_type=" + tar_type + ", s_range=" + s_range + ", aoe=" + aoe + "]";
+	}
+
 	public void showinfo() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Skill [period:" + this.period + "|");

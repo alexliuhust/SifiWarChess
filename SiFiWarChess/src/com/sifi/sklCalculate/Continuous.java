@@ -28,8 +28,25 @@ public class Continuous implements SkillCal {
 		chngSet.add("uhp");
 		chngSet.add("speed");
 		chngSet.add("armor");
+		
 		chngSet.add("damage");
+		chngSet.add("l");
+		chngSet.add("h");
+		chngSet.add("g");
+		chngSet.add("a");
+		chngSet.add("g_lb");
+		chngSet.add("g_hb");
+		chngSet.add("g_lm");
+		chngSet.add("g_hm");
+		chngSet.add("a_lb");
+		chngSet.add("a_hb");
+		chngSet.add("a_lm");
+		chngSet.add("a_hm");
+		
 		chngSet.add("freq");
+		chngSet.add("g_freq");
+		chngSet.add("a_freq");
+		
 		chngSet.add("range");
 		
 		attr0 = new ArrayList<>();

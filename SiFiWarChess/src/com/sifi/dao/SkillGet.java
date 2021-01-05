@@ -2,16 +2,16 @@ package com.sifi.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.Set;
+import java.util.Map;
 
-import com.sifi.util.DbUtil;
 import com.sifi.model.Skill;
+import com.sifi.util.DbUtil;
 
 public class SkillGet {
 	
 	private static DbUtil dbUtil = new DbUtil();
 
-	public static void getSkillsByUnitName(String unitname, Set<Skill> skills) {
+	public static void getSkillsByUnitName(String unitname, Map<String, Skill> skills) {
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
@@ -34,7 +34,7 @@ public class SkillGet {
 				int mark             = rs.getInt("aoe");
 				skill.aoe = mark == 0 ? false : true;
 				
-				skills.add(skill);
+				skills.put(skill.skill, skill);
 			}
 			
 		} catch(Exception e) {

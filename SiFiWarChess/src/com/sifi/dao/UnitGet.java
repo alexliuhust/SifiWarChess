@@ -2,7 +2,7 @@ package com.sifi.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.HashSet;
+import java.util.HashMap;
 
 import com.sifi.model.Unit;
 import com.sifi.util.DbUtil;
@@ -55,7 +55,7 @@ public class UnitGet {
 				mark           = rs.getInt("g_aoe");
 				unit.a_aoe = mark == 0? false : true;
 				
-				unit.skills = new HashSet<>();
+				unit.skills = new HashMap<>();
 				SkillGet.getSkillsByUnitName(name, unit.skills);
 				
 			}

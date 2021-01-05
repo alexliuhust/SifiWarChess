@@ -37,7 +37,7 @@ public class Unit {
 	public Integer   a_range ;
 	public Boolean   a_aoe   ;
 	
-	public Set<Skill> skills  = new HashSet<Skill>();
+	public Map<String, Skill> skills  = new HashMap<String, Skill>();
 	public Set<Buff> buffs = new HashSet<>();
 	
 	public Unit() {}
@@ -114,6 +114,8 @@ public class Unit {
 	
 	public void setAttribute(String attr, Integer dgr) {
 		//System.out.println(attr + ": " + dgr);
+		
+		
 		if (attr.equals("scale")) {
 			this.c_scale += dgr;
 			if (this.c_scale > this.scale)
@@ -185,25 +187,54 @@ public class Unit {
 			if (a_lm != 0) this.a_lm += dgr;
 			if (a_hm != 0) this.a_hm += dgr;
 		}
-		else if (attr.equals("g_lb")) if (g_lb != 0) this.g_lb += dgr;
-		else if (attr.equals("g_hb")) if (g_hb != 0) this.g_hb += dgr;
-		else if (attr.equals("g_lm")) if (g_lm != 0) this.g_lm += dgr;
-		else if (attr.equals("g_hm")) if (g_hm != 0) this.g_hm += dgr;
-		else if (attr.equals("a_lb")) if (a_lb != 0) this.a_lb += dgr;
-		else if (attr.equals("a_hb")) if (a_hb != 0) this.a_hb += dgr;
-		else if (attr.equals("a_lm")) if (a_lm != 0) this.a_lm += dgr;
-		else if (attr.equals("a_hm")) if (a_hm != 0) this.a_hm += dgr;
+		else if (attr.equals("g_lb")) {
+			if (g_lb != 0) this.g_lb += dgr;
+		}
+		else if (attr.equals("g_hb")) {
+			if (g_hb != 0) this.g_hb += dgr;
+		}
+		else if (attr.equals("g_lm")) {
+			if (g_lm != 0) this.g_lm += dgr;
+		}
+		else if (attr.equals("g_hm")) {
+			if (g_hm != 0) this.g_hm += dgr;
+		}
+		else if (attr.equals("a_lb")) {
+			if (a_lb != 0) this.a_lb += dgr;
+		}
+		else if (attr.equals("a_hb")) {
+			if (a_hb != 0) this.a_hb += dgr;
+		}
+		else if (attr.equals("a_lm")) {
+			if (a_lm != 0) this.a_lm += dgr;
+		}
+		else if (attr.equals("a_hm")) {
+			if (a_hm != 0) this.a_hm += dgr;
+		}
 		
 		else if (attr.equals("freq")) {
 			this.g_freq += dgr;
 			this.a_freq += dgr;
 		}
-		else if (attr.equals("g_freq")) this.g_freq += dgr;
-		else if (attr.equals("a_freq")) this.a_freq += dgr;
+		else if (attr.equals("g_freq")) {
+			this.g_freq += dgr;
+		}
+		else if (attr.equals("a_freq")) {
+			this.a_freq += dgr;
+		}
 		
 		else if (attr.equals("range")) {
-			this.g_range += dgr;
-			this.a_range += dgr;
+			if (g_range != 0) this.g_range += dgr;
+			if (a_range != 0) this.a_range += dgr;
+		}
+		
+		else if (attr.equals("g_aoe")) {
+			if (dgr == 1) this.g_aoe = true;
+			else this.g_aoe = false;
+		}
+		else if (attr.equals("a_aoe")) {
+			if (dgr == 1) this.a_aoe = true;
+			else this.a_aoe = false;
 		}
 	}
 	
@@ -216,7 +247,7 @@ public class Unit {
 		if (this.c_mana < this.mana) 
 			this.c_mana += 10;
 		
-		for (Skill skill : this.skills) {
+		for (Skill skill : this.skills.values()) {
 			if (skill.cur_cold_t < skill.cold_t) 
 				skill.cur_cold_t++;
 		}
@@ -225,7 +256,6 @@ public class Unit {
 	public void checkBuffs() {
 		if (!this.buffs.isEmpty()) {
 			for (Buff buff : this.buffs) {
-				buff.showInfo();
 				int num = buff.triggerOrStop();
 				if (num == 0) {
 					this.buffs.remove(buff);
@@ -233,25 +263,28 @@ public class Unit {
 			}
 		}
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Unit [name=" + name + ", c_scale=" + c_scale + ", uhp=" + uhp + ", speed=" + speed + ", armor=" + armor
-				+ "\ng_freq=" + g_freq + ", g_range=" + g_range + ", a_freq=" + a_freq + ", a_range=" + a_range + "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Unit " + name + ", scale=" + c_scale + ", shield=" + c_shield+ ", speed=" + speed + "\n");
+		if (this.scale == 1) {
+			sb.append("     uhp=" + c_uhp + ", mana=" + c_mana + ", armor=" + armor + "\n");
+		} else {
+			sb.append("     uhp=" + uhp + ", mana=" + c_mana + ", armor=" + armor + "\n");
+		}
+		
+		sb.append("     g_freq=" + g_freq + ", a_freq=" + a_freq + "\n");
+		
+//		for (Skill sk : this.skills.values()) {
+//			sb.append(sk.toString() + "\n");
+//		}
+		for (Buff bf : this.buffs) {
+			sb.append(bf.toString() + "\n");
+		}
+		return sb.toString();
 	}
-	
-//	public void showInfo() {
-//		System.out.println("Unit [uhp=" + uhp + ", speed=" + speed + ", g_freq=" + g_freq);
-//	}
-	
-//	public void showInfo() {
-//		System.out.println("Unit [c_mana=" + c_mana + "]");
-//	}
-	
-	public void showInfo() {
-		System.out.println(name + ", c_shield=" + c_shield + ", c_scale=" + c_scale);
-	}
-	
+
 	public String showHealth() {
 		
 		if (scale == 1) {

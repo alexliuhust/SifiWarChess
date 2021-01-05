@@ -21,9 +21,14 @@ public class AttTrigger {
 			if (attacker.a_range <= target.a_range) counterAttack = true;
 		}
 		
+		
 		int totalDamageFromDefender = 0;
 		if (counterAttack) 
 			totalDamageFromDefender = PassiveDefense.totalDamage(attacker, target);
+		
+		System.out.println("totalDamageFromAttacker:" + totalDamageFromAttacker);
+		System.out.println("totalDamageFromDefender:" + totalDamageFromDefender);
+		
 		AtciveAttack.scaleDecrease(totalDamageFromAttacker, target);
 		if (counterAttack) 
 			PassiveDefense.scaleDecrease(totalDamageFromDefender, attacker);
