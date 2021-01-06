@@ -26,10 +26,21 @@ public class SklTrigger {
 			return;
 		
 		// Determine the target type 
-		if (!skill.tar_type.equals("n") && !skill.tar_type.equals("self")) {
-			if (!skill.tar_type.equals(target.getSkillTargetType()))
+		if (!skill.tar_type.equals("n") 
+				&& !skill.tar_type.equals("self")
+				&& !skill.tar_type.equals("g") 
+				&& !skill.tar_type.equals("a")) {
+			if (!skill.tar_type.equals(target.getSkillTargetType())) {
 				return;
+			}
 		}
+		if (skill.tar_type.equals("g") && target.ga != 'g') {
+			return;
+		}
+		if (skill.tar_type.equals("a") && target.ga != 'a') {
+			return;
+		}
+		
 		
 		caster.c_mana -= skill.manacost;
 		skill.cur_cold_t = 0;
