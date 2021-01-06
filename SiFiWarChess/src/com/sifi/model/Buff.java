@@ -42,6 +42,8 @@ public class Buff {
 				//System.out.println(attrs.get(i) + ";" + dgrs.get(i));
 				target.setAttribute(attrs.get(i), dgrs.get(i));
 			}
+			c_period--;
+			return 1;
 		}
 		
 		if (c_period == 0) {
@@ -54,6 +56,7 @@ public class Buff {
 		
 		c_period--;
 		return 1;
+		
 	}
 	
 	

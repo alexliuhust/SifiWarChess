@@ -1,9 +1,9 @@
 package com.sifi.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Unit {
 	public String    alias   ;
@@ -38,7 +38,7 @@ public class Unit {
 	public Boolean   a_aoe   ;
 	
 	public Map<String, Skill> skills  = new HashMap<String, Skill>();
-	public Set<Buff> buffs = new HashSet<>();
+	public List<Buff> buffs = new ArrayList<>();
 	
 	public Unit() {}
 	
@@ -88,6 +88,8 @@ public class Unit {
 	public void selfIncreaseManaAndColdTime() {
 		if (this.c_mana < this.mana) 
 			this.c_mana += 10;
+		if (this.c_mana > this.mana)
+			this.c_mana = this.mana;
 		
 		for (Skill skill : this.skills.values()) {
 			if (skill.cur_cold_t < skill.cold_t) 
@@ -96,12 +98,17 @@ public class Unit {
 	}
 	
 	public void checkBuffs() {
-		if (!this.buffs.isEmpty()) {
-			for (Buff buff : this.buffs) {
+		if (this.buffs.size() > 0) {
+			List<Integer> removeIndexes = new ArrayList<>();
+			for (int i = this.buffs.size() - 1; i >= 0; i--) {
+				Buff buff = buffs.get(i);
 				int num = buff.triggerOrStop();
 				if (num == 0) {
-					this.buffs.remove(buff);
+					removeIndexes.add(i);
 				}
+			}
+			for (int i : removeIndexes) {
+				this.buffs.remove(i);
 			}
 		}
 	}

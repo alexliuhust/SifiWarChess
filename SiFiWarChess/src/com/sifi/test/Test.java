@@ -8,33 +8,31 @@ import com.sifi.model.Unit;
 public class Test {
 	
 	public static void attackTest0() {
-		Unit marine1 = UnitGet.getUnitByName("marine");
-		Unit medican = UnitGet.getUnitByName("Medican");
-		marine1.c_scale -= 40;
-		System.out.println(marine1);
-		System.out.println(medican);
+		Unit Storm = UnitGet.getUnitByName("Storm Chariot");
+		Unit Tank = UnitGet.getUnitByName("Siege Tank");
+		Tank.shield = 100;
+		Tank.c_shield = 100;
+		System.out.println(Storm);
+		System.out.println(Tank);
 		
 		System.out.println("=================1=================");
-		medican.skills.get("Medical nanoworm").trigger(medican, marine1);
-		System.out.println(marine1);
-		System.out.println(medican);
+		Storm.skills.get("EMP").trigger(Storm, Tank);
+		System.out.println(Storm);
+		System.out.println(Tank);
 		
 		System.out.println("=================2=================");
-		marine1.myTurnStart();
-		medican.myTurnStart();
-		medican.skills.get("Medical nanoworm").trigger(medican, marine1);
-		System.out.println(marine1);
-		System.out.println(medican);
+		Storm.myTurnStart();
+		Tank.myTurnStart();
+		Storm.skills.get("EMP").trigger(Storm, Tank);
+		System.out.println(Storm);
+		System.out.println(Tank);
 		
 		System.out.println("=================3=================");
-		marine1.myTurnStart();
-		medican.myTurnStart();
-		System.out.println(marine1);
-		System.out.println(medican);
-		System.out.println("====Emergency====");
-		medican.skills.get("Emergency").trigger(medican, marine1);
-		System.out.println(marine1);
-		System.out.println(medican);
+		Storm.myTurnStart();
+		Tank.myTurnStart();
+		System.out.println(Storm);
+		System.out.println(Tank);
+		
 		
 	}
 	
