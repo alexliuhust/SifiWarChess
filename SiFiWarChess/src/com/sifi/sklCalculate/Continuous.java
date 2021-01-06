@@ -74,12 +74,15 @@ public class Continuous implements SkillCal {
 		}
 		
 		if (!attr0.isEmpty()) {
-			target.buffs.add(new Buff(0, attr0, dgr0, skill.period, target));
+			Buff newBuff = new Buff(0, attr0, dgr0, skill.period, target);
+			target.buffs.add(newBuff);
+			newBuff.triggerOrStop();
 		}
 		
 		if (!attr1.isEmpty()) {
-			
-			target.buffs.add(new Buff(1, attr1, dgr1, skill.period, target));
+			Buff newBuff = new Buff(1, attr1, dgr1, skill.period, target);
+			target.buffs.add(newBuff);
+			newBuff.triggerOrStop();
 		}
 
 	}

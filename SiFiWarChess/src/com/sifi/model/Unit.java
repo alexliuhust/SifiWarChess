@@ -43,43 +43,7 @@ public class Unit {
 	public Unit() {}
 	
 	public Unit(Unit target) {
-		this.alias    = target.alias   ;
-		this.name     = target.name    ;
-		this.cost     = target.cost    ;
-		
-		this.scale    = target.scale   ;
-		this.c_scale  = target.scale   ;
-		this.shield   = target.shield  ;
-		this.c_shield = target.shield  ;
-		
-		this.uhp      = target.uhp     ;
-		this.c_uhp    = target.uhp     ;
-		this.mana     = target.mana    ;
-		this.c_mana   = target.mana    ;
-		this.speed    = target.speed   ;
-		this.ga       = target.ga      ;
-		
-		this.armor    = target.armor   ;
-		this.hl       = target.hl      ;
-		this.bm       = target.bm      ;
-		
-		this.g_lb     = target.g_lb    ;
-		this.g_hb     = target.g_hb    ;
-		this.g_lm     = target.g_lm    ;
-		this.g_hm     = target.g_hm    ;
-		this.g_freq   = target.g_freq  ;
-		this.g_range  = target.g_range ;
-		this.g_aoe    = target.g_aoe   ;
-		
-		this.a_lb     = target.a_lb    ;
-		this.a_hb     = target.a_hb    ;
-		this.a_lm     = target.a_lm    ;
-		this.a_hm     = target.a_hm    ;
-		this.a_freq   = target.a_freq  ;
-		this.a_range  = target.a_range ;
-		this.a_aoe    = target.a_aoe   ;
-		
-		this.skills   = target.skills  ;
+		UnitSettingHelper.cloneUnit(this, target);
 	}
 	
 	public String getBeAttackedType() {
@@ -113,129 +77,7 @@ public class Unit {
 	}
 	
 	public void setAttribute(String attr, Integer dgr) {
-		//System.out.println(attr + ": " + dgr);
-		
-		
-		if (attr.equals("scale")) {
-			this.c_scale += dgr;
-			if (this.c_scale > this.scale)
-				this.c_scale = this.scale;
-			else if (this.c_scale < 0) this.c_scale = 0;
-		}
-		else if (attr.equals("shield")) {
-			this.c_shield += dgr;
-			if (this.c_shield > this.shield)
-				this.c_shield = this.shield;
-			else if (this.c_shield < 0) this.c_shield = 0;
-		}
-		else if (attr.equals("mana")) {
-			this.c_mana += dgr;
-			if (this.c_mana < 0) this.c_mana = 0;
-			else if (this.c_mana > this.mana) this.c_mana = mana;
-		}
-		
-		else if (attr.equals("uhp")) {
-			// If it's a single unit
-			if (this.scale == 1) {
-				this.c_uhp += dgr;
-				if (this.c_uhp > this.uhp) this.c_uhp = this.uhp;
-				if (this.c_uhp <= 0) this.c_scale = 0;
-			}
-			else {
-				this.uhp += dgr;
-				if (this.uhp <= 0) this.uhp = 1;
-			}
-		}
-		
-		else if (attr.equals("speed")) {
-			this.speed += dgr;
-		}
-		else if (attr.equals("armor")) {
-			this.armor += dgr;
-		}
-		else if (attr.equals("damage")) {
-			if (g_lb != 0) this.g_lb += dgr;
-			if (g_hb != 0) this.g_hb += dgr;
-			if (g_lm != 0) this.g_lm += dgr;
-			if (g_hm != 0) this.g_hm += dgr;
-			if (a_lb != 0) this.a_lb += dgr;
-			if (a_hb != 0) this.a_hb += dgr;
-			if (a_lm != 0) this.a_lm += dgr;
-			if (a_hm != 0) this.a_hm += dgr;
-		}
-		else if (attr.equals("l")) {
-			if (g_lb != 0) this.g_lb += dgr;
-			if (g_lm != 0) this.g_lm += dgr;
-			if (a_lb != 0) this.a_lb += dgr;
-			if (a_lm != 0) this.a_lm += dgr;
-		}
-		else if (attr.equals("h")) {
-			if (g_hb != 0) this.g_hb += dgr;
-			if (g_hm != 0) this.g_hm += dgr;
-			if (a_hb != 0) this.a_hb += dgr;
-			if (a_hm != 0) this.a_hm += dgr;
-		}
-		else if (attr.equals("g")) {
-			if (g_lb != 0) this.g_lb += dgr;
-			if (g_hb != 0) this.g_hb += dgr;
-			if (g_lm != 0) this.g_lm += dgr;
-			if (g_hm != 0) this.g_hm += dgr;
-		}
-		else if (attr.equals("a")) {
-			if (a_lb != 0) this.a_lb += dgr;
-			if (a_hb != 0) this.a_hb += dgr;
-			if (a_lm != 0) this.a_lm += dgr;
-			if (a_hm != 0) this.a_hm += dgr;
-		}
-		else if (attr.equals("g_lb")) {
-			if (g_lb != 0) this.g_lb += dgr;
-		}
-		else if (attr.equals("g_hb")) {
-			if (g_hb != 0) this.g_hb += dgr;
-		}
-		else if (attr.equals("g_lm")) {
-			if (g_lm != 0) this.g_lm += dgr;
-		}
-		else if (attr.equals("g_hm")) {
-			if (g_hm != 0) this.g_hm += dgr;
-		}
-		else if (attr.equals("a_lb")) {
-			if (a_lb != 0) this.a_lb += dgr;
-		}
-		else if (attr.equals("a_hb")) {
-			if (a_hb != 0) this.a_hb += dgr;
-		}
-		else if (attr.equals("a_lm")) {
-			if (a_lm != 0) this.a_lm += dgr;
-		}
-		else if (attr.equals("a_hm")) {
-			if (a_hm != 0) this.a_hm += dgr;
-		}
-		
-		else if (attr.equals("freq")) {
-			this.g_freq += dgr;
-			this.a_freq += dgr;
-		}
-		else if (attr.equals("g_freq")) {
-			this.g_freq += dgr;
-		}
-		else if (attr.equals("a_freq")) {
-			this.a_freq += dgr;
-		}
-		
-		else if (attr.equals("range")) {
-			if (g_range != 0) this.g_range += dgr;
-			if (a_range != 0) this.a_range += dgr;
-		}
-		
-		else if (attr.equals("g_aoe")) {
-			if (dgr == 1) this.g_aoe = true;
-			else this.g_aoe = false;
-		}
-		else if (attr.equals("a_aoe")) {
-			if (dgr == 1) this.a_aoe = true;
-			else this.a_aoe = false;
-		}
+		UnitSettingHelper.setAttribute(this, attr, dgr);
 	}
 	
 	public void myTurnStart() {
@@ -276,9 +118,9 @@ public class Unit {
 		
 		sb.append("     g_freq=" + g_freq + ", a_freq=" + a_freq + "\n");
 		
-//		for (Skill sk : this.skills.values()) {
-//			sb.append(sk.toString() + "\n");
-//		}
+		for (Skill sk : this.skills.values()) {
+			sb.append(sk.toString() + "\n");
+		}
 		for (Buff bf : this.buffs) {
 			sb.append(bf.toString() + "\n");
 		}

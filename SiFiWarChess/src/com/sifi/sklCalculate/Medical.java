@@ -35,7 +35,9 @@ public class Medical implements SkillCal {
 			dgr.add(totalHealing);
 		}
 		
-		target.buffs.add(new Buff(0, attr, dgr, skill.period, target));
+		Buff newBuff = new Buff(0, attr, dgr, skill.period, target);
+		target.buffs.add(newBuff);
+		newBuff.triggerOrStop();
 	}
 
 }
