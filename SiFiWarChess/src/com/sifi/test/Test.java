@@ -12,6 +12,8 @@ public class Test {
 		Unit Battleship = UnitGet.getUnitByName("Battleship");
 		Battleship.shield = 200;
 		Battleship.c_shield = 200;
+		Storm.shield = 1500;
+		Storm.c_shield = 100;
 		
 		System.out.println(Battleship);
 		System.out.println(Storm);

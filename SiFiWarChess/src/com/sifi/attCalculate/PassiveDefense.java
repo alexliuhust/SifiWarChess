@@ -32,6 +32,12 @@ public class PassiveDefense {
 		
 		// If attacker is a single unit
 		if (attacker.scale == 1) {
+			if (attacker.c_shield > 0) {
+				attacker.c_shield -= totalDamageFromDefender / 10;
+				if (attacker.c_shield < 0) 
+					attacker.c_shield = 0;
+				return;
+			}
 			attacker.c_uhp -= totalDamageFromDefender / 10;
 			return;
 		}

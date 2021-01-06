@@ -1,6 +1,7 @@
 package com.sifi.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,7 +126,7 @@ public class Unit {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Unit " + name + ", scale=" + c_scale + ", shield=" + c_shield+ ", speed=" + speed + "\n");
+		sb.append("Unit " + name + " " + showHealth() + ", speed=" + speed + "\n");
 		if (this.scale == 1) {
 			sb.append("     uhp=" + c_uhp + ", mana=" + c_mana + ", armor=" + armor + "\n");
 		} else {
@@ -144,17 +145,56 @@ public class Unit {
 	}
 
 	public String showHealth() {
+		char[] bar = new char[20];
+		Arrays.fill(bar, '.');
+		String str = "";
 		
+		// Single Unit
 		if (scale == 1) {
-			
-			return "";
+			if (shield == 0) {
+				int num = this.c_uhp * 20 / this.uhp;
+				if (this.c_uhp * 20 % this.uhp != 0) num++;
+				
+				for (int i = 0; i < num; i++) bar[i] = '|';
+				str = "[" + String.valueOf(bar) + "]";
+			} else {
+				bar[9] = ']';
+				bar[10] = '[';
+				
+				int num1 = this.c_shield * 9 / this.shield;
+				if (this.c_shield * 9 % this.shield != 0) num1++;
+				int num2 = this.c_uhp * 9 / this.uhp;
+				if (this.c_uhp * 9 % this.uhp != 0) num2++;
+				
+				for (int i = 0; i < num2; i++) bar[i] = '|';
+				for (int i = 11; i < num1 + 11; i++) bar[i] = '!';
+				str = "[" + String.valueOf(bar) + "]";
+			}
+			return str;
 		}
 		
-		if (shield > 0) {
+		
+		if (shield == 0) {
+			int num = this.c_scale * 20 / this.scale;
+			if (this.c_scale * 20 % this.scale != 0) num++;
 			
+			for (int i = 0; i < num; i++) bar[i] = '|';
+			str = "[" + String.valueOf(bar) + "]";
+		} else {
+			bar[9] = ']';
+			bar[10] = '[';
+			
+			int num1 = this.c_shield * 9/ this.shield;
+			if (this.c_shield * 9 % this.shield != 0) num1++;
+			int num2 = this.c_scale * 9 / this.scale;
+			if (this.c_scale * 9 % this.scale != 0) num2++;
+			
+			for (int i = 0; i < num2; i++) bar[i] = '|';
+			for (int i = 11; i < num1 + 11; i++) bar[i] = '!';
+			str = "[" + String.valueOf(bar) + "]";
 		}
 		
-		return "";
+		return str;
 	}
 }
 

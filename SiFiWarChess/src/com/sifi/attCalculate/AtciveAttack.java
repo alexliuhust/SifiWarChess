@@ -31,6 +31,12 @@ public class AtciveAttack {
 		
 		// If target is a single unit
 		if (target.scale == 1) {
+			if (target.c_shield > 0) {
+				target.c_shield -= totalDamageFromAttacker / 10;
+				if (target.c_shield < 0) 
+					target.c_shield = 0;
+				return;
+			}
 			target.c_uhp -= totalDamageFromAttacker / 10;
 			return;
 		}
