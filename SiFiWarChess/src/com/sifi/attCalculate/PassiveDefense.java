@@ -18,6 +18,8 @@ public class PassiveDefense {
 			}
 		}
 		
+		System.out.println("singleDamageFromDefender:" + singleDamage);
+		
 		if (attacker.ga == 'a') return singleDamage * target.a_freq * target.c_scale;
 		return singleDamage * target.g_freq * target.c_scale;
 	}

@@ -19,6 +19,7 @@ public class AtciveAttack {
 				singleDamage = target.uhp;
 			}
 		}
+		System.out.println("singleDamageFromAttacker:" + singleDamage);
 		
 		if (target.ga == 'a') return singleDamage * attacker.a_freq * attacker.c_scale;
 		return singleDamage * attacker.g_freq * attacker.c_scale;

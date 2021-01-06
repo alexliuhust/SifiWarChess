@@ -82,14 +82,19 @@ public class Unit {
 	
 	public void myTurnStart() {
 		checkBuffs();
-		selfIncreaseManaAndColdTime();
+		selfIncreaseShieldAndManaAndColdTime();
 	}
 	
-	public void selfIncreaseManaAndColdTime() {
+	public void selfIncreaseShieldAndManaAndColdTime() {
 		if (this.c_mana < this.mana) 
 			this.c_mana += 10;
 		if (this.c_mana > this.mana)
 			this.c_mana = this.mana;
+		
+		if (this.c_shield < this.shield) 
+			this.c_shield += 10;
+		if (this.c_shield > this.shield)
+			this.c_shield = this.shield;
 		
 		for (Skill skill : this.skills.values()) {
 			if (skill.cur_cold_t < skill.cold_t) 
@@ -113,6 +118,10 @@ public class Unit {
 		}
 	}
 	
+	public void cast(String skillname, Unit target) {
+		this.skills.get(skillname).trigger(this, target);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -125,12 +134,12 @@ public class Unit {
 		
 		sb.append("     g_freq=" + g_freq + ", a_freq=" + a_freq + "\n");
 		
-		for (Skill sk : this.skills.values()) {
-			sb.append(sk.toString() + "\n");
-		}
-		for (Buff bf : this.buffs) {
-			sb.append(bf.toString() + "\n");
-		}
+//		for (Skill sk : this.skills.values()) {
+//			sb.append(sk.toString() + "\n");
+//		}
+//		for (Buff bf : this.buffs) {
+//			sb.append(bf.toString() + "\n");
+//		}
 		return sb.toString();
 	}
 
