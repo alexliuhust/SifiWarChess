@@ -46,6 +46,8 @@ public class Continuous implements SkillCal {
 		chngSet.add("freq");
 		chngSet.add("g_freq");
 		chngSet.add("a_freq");
+		chngSet.add("g_aoe");
+		chngSet.add("a_aoe");
 		
 		chngSet.add("range");
 		
