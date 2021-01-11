@@ -8,30 +8,28 @@ import com.sifi.model.Unit;
 public class Test {
 	
 	public static void attackTest0() {
-		Unit Spores = UnitGet.getUnitByName("Toxic Spores");
-		Unit Battleship = UnitGet.getUnitByName("Battleship");
+		Unit Beetle = UnitGet.getUnitByName("Fire Beetle");
+		Unit Frigate1 = UnitGet.getUnitByName("Battleship");
+		Unit Frigate2 = UnitGet.getUnitByName("Battleship");
 		
-		System.out.println(Battleship);
-		System.out.println(Spores);
+		System.out.println(Beetle);
+		System.out.println(Frigate1);
+		System.out.println(Frigate2);
 		
 		System.out.println("=================1=================");
-		Spores.cast("Charge", Spores);
-		System.out.println(Battleship);
-		System.out.println(Spores);
+		Beetle.cast("Magma jet", Frigate1);
+		Beetle.cast("Magma jet", Frigate2);
+		System.out.println(Beetle);
+		System.out.println(Frigate1);
+		System.out.println(Frigate2);
 		
 		System.out.println("=================2=================");
-		Spores.myTurnStart();
-		Battleship.myTurnStart();
-		Spores.cast("Charge", Spores);
-		System.out.println(Battleship);
-		System.out.println(Spores);
-		
-		System.out.println("=================3=================");
-		Spores.myTurnStart();
-		Battleship.myTurnStart();
-		Spores.cast("Blast", Battleship);
-		System.out.println(Battleship);
-		System.out.println(Spores);
+		Beetle.myTurnStart();
+		Beetle.cast("Magma jet", Frigate2);
+		Beetle.cast("Magma jet", Frigate1);
+		System.out.println(Beetle);
+		System.out.println(Frigate1);
+		System.out.println(Frigate2);
 		
 		
 	}
