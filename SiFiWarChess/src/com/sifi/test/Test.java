@@ -8,35 +8,30 @@ import com.sifi.model.Unit;
 public class Test {
 	
 	public static void attackTest0() {
-		Unit Storm = UnitGet.getUnitByName("Storm Chariot");
+		Unit Spores = UnitGet.getUnitByName("Toxic Spores");
 		Unit Battleship = UnitGet.getUnitByName("Battleship");
-		Battleship.shield = 200;
-		Battleship.c_shield = 200;
-		Storm.shield = 1500;
-		Storm.c_shield = 100;
 		
 		System.out.println(Battleship);
-		System.out.println(Storm);
+		System.out.println(Spores);
 		
 		System.out.println("=================1=================");
-		Storm.cast("EMP", Battleship);
+		Spores.cast("Charge", Spores);
 		System.out.println(Battleship);
-		System.out.println(Storm);
+		System.out.println(Spores);
 		
 		System.out.println("=================2=================");
+		Spores.myTurnStart();
 		Battleship.myTurnStart();
-		Storm.myTurnStart();
-		Storm.cast("EMP", Battleship);
+		Spores.cast("Charge", Spores);
 		System.out.println(Battleship);
-		System.out.println(Storm);
+		System.out.println(Spores);
 		
 		System.out.println("=================3=================");
+		Spores.myTurnStart();
 		Battleship.myTurnStart();
-		Storm.myTurnStart();
+		Spores.cast("Blast", Battleship);
 		System.out.println(Battleship);
-		System.out.println(Storm);
-		
-		
+		System.out.println(Spores);
 		
 		
 	}
