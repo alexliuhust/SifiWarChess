@@ -156,7 +156,7 @@ public class Unit {
 				if (this.c_uhp * 20 % this.uhp != 0) num++;
 				
 				for (int i = 0; i < num; i++) bar[i] = '|';
-				str = "[" + String.valueOf(bar) + "]";
+				str = "[" + String.valueOf(bar) + "]" + " (" + this.c_uhp + ")";
 			} else {
 				bar[9] = ']';
 				bar[10] = '[';
@@ -168,7 +168,7 @@ public class Unit {
 				
 				for (int i = 0; i < num2; i++) bar[i] = '|';
 				for (int i = 11; i < num1 + 11; i++) bar[i] = '!';
-				str = "[" + String.valueOf(bar) + "]";
+				str = "[" + String.valueOf(bar) + "]" + " (" +this.c_uhp + "/" +  this.c_shield+ ")";
 			}
 			return str;
 		}
@@ -179,7 +179,7 @@ public class Unit {
 			if (this.c_scale * 20 % this.scale != 0) num++;
 			
 			for (int i = 0; i < num; i++) bar[i] = '|';
-			str = "[" + String.valueOf(bar) + "]";
+			str = "[" + String.valueOf(bar) + "]" + " (" + this.c_scale + ")";
 		} else {
 			bar[9] = ']';
 			bar[10] = '[';
@@ -191,7 +191,7 @@ public class Unit {
 			
 			for (int i = 0; i < num2; i++) bar[i] = '|';
 			for (int i = 11; i < num1 + 11; i++) bar[i] = '!';
-			str = "[" + String.valueOf(bar) + "]";
+			str = "[" + String.valueOf(bar) + "]" + " (" +this.c_scale + "/" +  this.c_shield+ ")";
 		}
 		
 		return str;
